@@ -23,6 +23,8 @@ _Note: This was created as a [ShipIt](https://www.atlassian.com/company/shipit) 
 canvaslms-course-settings-find-accounts.js
 ```
 
+_Note that the bookmarklet name can be anything you want. The above is just an example._
+
 **Bookmark URL:**
 ```
 javascript:!function(){"use strict";var e,n,t,o=[],c={credentials:"same-origin",headers:{Accept:"application/json"}};function r(e){return fetch("/api/v1/accounts/"+e,c).then(function(e){return e.json()})}function i(e){return o.push(e),e.parent_account_id?r(e.parent_account_id).then(i):o}function u(e){var n=document.getElementById("course_account_id").parentNode,t=document.createElement("span");return n&&(t.style.display="block",t.style.backgroundColor="lightyellow",t.style.padding=".5em",t.style.marginBottom="1em",t.appendChild(document.createTextNode(e)),n.appendChild(t)),e}n=window.location.pathname.match(/^\/courses\/(\d+)\/settings/),(t=n?n[1]:null)?(console.log("Script executing..."),(e=t,fetch("/api/v1/courses/"+e,c).then(function(e){return e.json()})).then(function(e){return r(e.account_id)}).then(i).then(function(e){var n,t=((n=(n=e).slice(0)).reverse(),n.map(function(e){return e.name}).join(" > "));return console.log("Accounts: ",t),t}).then(u)):console.log("Script not executed because URL does not match /courses/:id/settings")}();
