@@ -42,12 +42,13 @@ javascript:!function(){"use strict";var e,n,t,o=[],c={credentials:"same-origin",
 | ![Before](images/canvaslms-course-settings-find-accounts-before.png) | ![After](images/canvaslms-course-settings-find-accounts-after.png) |
 
 
+[Unminified Source Code](canvaslms/course-settings-find-all-accounts.js)
+
+
 ## Development Process
 
-1. Write some javascript to implement a task.
-2. Test javascript (e.g. developer console).
-3. Iterate until javascript is done.
-4. Commit JS file to git repository.
-5. Compress JS file so that it can be used as a bookmarklet (e.g. https://jscompress.com/).
-6. Update the README with a description of the bookmarklet and the compressed version of the JS.
-7. Test and validate bookmarklet.
+1. Write some JS to implement a task (use developer console to test functionality).
+2. Commit JS to git repository when it's done.
+3. Prepare for deployment as bookmarklet by minifying the JS (e.g. https://jscompress.com/).
+4. Test and validate minified bookmarklet.
+5. Update the README with a description of the bookmarklet and the minfiied version of the JS.
