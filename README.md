@@ -11,9 +11,7 @@ _Note: This was created as a [ShipIt](https://www.atlassian.com/company/shipit) 
 
 ## Canvas LMS
 
-### Course Settings 
-
-**Task:**
+### Quick identification of which school a course is associated with 
 
 > When examining the Settings of a Canvas course in the residential instance, it's not always possible to tell which school a course is associated with. It's easy to identify the school if the course lives in a school sub-folder. But if a course lives in a sub-sub-folder, i.e. a department within a school, there's no way to tell which school the department and course belongs to. The outcome of this project would a be a self-service tool that makes it easy to **identify which school a course belongs to**, which can be important when responding to support tickets. 
 
