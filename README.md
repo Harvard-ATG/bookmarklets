@@ -34,7 +34,7 @@ javascript:!function(){"use strict";var e,n,t,o=[],c={credentials:"same-origin",
 
 **Usage:**
 
-1. Add the bookmark.
+1. Add the bookmark (e.g. copy and paste the name and url).
 2. Navigate to a course settings page in canvas.
 3. Run the code by clicking on the bookmark.
 4. If it worked, you should see something like this:
