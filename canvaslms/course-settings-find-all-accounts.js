@@ -1,8 +1,8 @@
 (function() {
     "use strict";
 
-    var accounts = [];
-    var fetchOptions = {
+    var ACCOUNTS = [];
+    var FETCH_OPTIONS = {
         credentials: 'same-origin',
         headers: {
             'Accept': 'application/json'
@@ -10,39 +10,51 @@
     };
 
     function fetchCourse(course_id) {
-        return fetch("/api/v1/courses/" + course_id, fetchOptions).then(function(r) {
-            return r.json()
-        });
+        return fetch("/api/v1/courses/" + course_id, FETCH_OPTIONS).then(handleResponse);
     }
 
     function fetchAccount(account_id) {
-        return fetch("/api/v1/accounts/" + account_id, fetchOptions).then(function(r) {
-            return r.json()
-        });
+        return fetch("/api/v1/accounts/" + account_id, FETCH_OPTIONS).then(handleResponse);
     }
 
-    function recurseAccount(account) {
-        accounts.push(account);
+    function fetchCourseAccount(course) {
+        return fetchAccount(course.account_id);
+    }
+
+    function fetchAccountParents(account) {
+        ACCOUNTS.push(account);
         if (account.parent_account_id) {
-            return fetchAccount(account.parent_account_id).then(recurseAccount);
+            return fetchAccount(account.parent_account_id).then(fetchAccountParents);
         }
-        return accounts;
+        return ACCOUNTS;
     }
 
-    function getAccountsPath(accounts) {
-        var accounts = accounts.slice(0);
-        accounts.reverse();
-        return accounts.map(function(account) {
+    function handleResponse(response) {
+        if(response.ok) {
+            return response.json();
+        }
+        throw new Error('API request ' + response.url + ' failed with status code ' + response.status);
+    }
+
+    function processAccounts(accounts) {
+        var accounts_reversed = accounts.slice(0);
+        accounts_reversed = accounts.reverse();
+        var text = accounts_reversed.map(function(account) {
             return account.name;
         }).join(" > ");
+        return text;
     }
 
-    function annotateSettingsPage(text) {
-        var el = document.getElementById("course_account_id").parentNode;
-        var span = document.createElement("span");
+    function annotatePage(text, style) {
+        style = style || {};
+        style.color = style.color || "#000";
+        style.backgroundColor = style.backgroundColor || "#fff3cd";
+        var span, el = document.getElementById("course_account_id").parentNode;
         if (el) {
+            span = document.createElement("span");
             span.style.display = "block";
-            span.style.backgroundColor = "lightyellow";
+            span.style.color = style.color;
+            span.style.backgroundColor = style.backgroundColor;
             span.style.padding = ".5em";
             span.style.marginBottom = "1em";
             span.appendChild(document.createTextNode(text));
@@ -51,24 +63,27 @@
         return text;
     }
 
+    function handleError(errorObject) {
+        var errorText = "Error: " + errorObject.message;
+        annotatePage(errorText, {color: "#721c24", backgroundColor: "#f8d7da"});
+        return errorObject;
+    }
+
     function main() {
         var match = window.location.pathname.match(/^\/courses\/(\d+)\/settings/);
         var course_id = (match ? match[1] : null);
         if (course_id) {
             console.log("Script executing...");
             fetchCourse(course_id)
-                .then(function(course) {
-                    return fetchAccount(course.account_id);
-                })
-                .then(recurseAccount)
-                .then(function(accounts) {
-                    var path = getAccountsPath(accounts);
-                    console.log("Accounts: ", path);
-                    return path;
-                })
-                .then(annotateSettingsPage);
+                .then(fetchCourseAccount)
+                .then(fetchAccountParents)
+                .then(processAccounts)
+                .then(annotatePage)
+                .catch(handleError);
         } else {
-            console.log("Script not executed because URL does not match /courses/:id/settings")
+            var msg = "Script not executed. Please run this on the Canvas Course Settings page (e.g. /courses/:id/settings).";
+            console.log(msg);
+            alert(msg);
         }
     }
 
