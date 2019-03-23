@@ -37,9 +37,10 @@ javascript:!function(){"use strict";var t=[],r={credentials:"same-origin",header
 3. Run the code by clicking on the bookmark.
 4. If it worked, you should see something like this:
 
-| Before | After |
-|---|---|
-| ![Before](images/canvaslms-course-settings-find-accounts-before.png) | ![After](images/canvaslms-course-settings-find-accounts-after.png) |
+| Before and After | 
+|---|
+| ![Before](images/canvaslms-course-settings-find-accounts-before.png) | 
+| ![After](images/canvaslms-course-settings-find-accounts-after.png) |
 
 
 ## Development Process
