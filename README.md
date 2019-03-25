@@ -39,8 +39,8 @@ javascript:!function(){"use strict";var o=[],r={credentials:"same-origin",header
 
 | Before and After | 
 |---|
-| ![Before](images/canvaslms-course-settings-find-accounts-before.png) | 
-| ![After](images/canvaslms-course-settings-find-accounts-after.png) |
+| ![Before](images/canvaslms-course-show-accounts-before.png) | 
+| ![After](images/canvaslms-course-show-accounts-after.png) |
 
 
 ## Development Process
