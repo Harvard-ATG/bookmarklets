@@ -31,13 +31,16 @@ javascript:!function(){"use strict";var o=[],r={credentials:"same-origin",header
 3. Click the bookmark to run the code snippet.
 4. If it worked, you should see something like this:
 
-| Before and After | 
+| Succces (Before and After) | 
 |---|
 | ![Before](images/canvaslms-course-show-accounts-before.png) | 
 | ![After](images/canvaslms-course-show-accounts-after.png) |
 
-5. If it failed, you should see an error message displayed or a dialog message explaining what went wrong (e.g. API call failed).
+5. If it failed, you should see an error message  explaining what went wrong. For example, if your session has expired OR you are not authorized to retrieve course/account details, then you will see an error message like this:
 
+| Error (401 Forbidden) |
+|---|
+| ![401](images/canvaslms-course-show-accounts-401.png) |
 
 ## Contributing a bookmarklet
 
