@@ -7,7 +7,7 @@ Want to know more about bookmarklets?
 - [Mozilla: Use bookmarklets to quickly perform common web page tasks](https://support.mozilla.org/en-US/kb/bookmarklets-perform-common-web-page-tasks)
 - [Wikiedia: Bookmarklets](https://en.wikipedia.org/wiki/Bookmarklet)
 
-_Note: This was created as a [ShipIt](https://www.atlassian.com/company/shipit) project in HUIT AT._
+_Note: This was created as a March 2019 [ShipIt](https://www.atlassian.com/company/shipit) project in HUIT AT._
 
 ## Bookmarklets for [Canvas LMS](https://www.canvaslms.com/)
 
