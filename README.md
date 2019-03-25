@@ -18,7 +18,7 @@ _Note: This was created as a [ShipIt](https://www.atlassian.com/company/shipit) 
 **Bookmark Name:** 
 
 ```
-canvaslms-course-settings-find-accounts.js
+course-show-accounts.js
 ```
 
 _Note that the bookmarklet name can be anything you want. The above is just an example._
@@ -28,7 +28,7 @@ _Note that the bookmarklet name can be anything you want. The above is just an e
 javascript:!function(){"use strict";var o=[],r={credentials:"same-origin",headers:{Accept:"application/json"}};function n(e){return fetch("/api/v1/accounts/"+e,r).then(l)}function c(e){return n(e.account_id)}function a(e){return o.push(e),e.parent_account_id?n(e.parent_account_id).then(a):o}function l(e){if(e.ok)return e.json();throw new Error("API request "+e.url+" failed with status code "+e.status)}function t(e,o){(o=o||{}).color=o.color||"#000",o.backgroundColor=o.backgroundColor||"#fff3cd";var n,t=document.getElementById("course_account_id");return t&&((n=document.createElement("span")).style.display="block",n.style.color=o.color,n.style.backgroundColor=o.backgroundColor,n.style.padding=".5em",n.style.marginBottom="1em",n.appendChild(document.createTextNode(e)),t.parentNode.appendChild(n)),t}function u(e){var o=e.slice().reverse().map(function(e){return e.name}).join(" > ");return console.log(e),console.log(o),t(o)||alert(o),e}function s(e){var o="Error: "+e.message;return console.log(e),t(o,{color:"#721c24",backgroundColor:"#f8d7da"})||alert(o),e}!function(){var e,o=window.location.pathname.match(/^\/courses\/(\d+)/),n=o?o[1]:null;if(n)console.log("Script executing..."),(e=n,fetch("/api/v1/courses/"+e,r).then(l)).then(c).then(a).then(u).catch(s);else{var t="Please run this on a Canvas Course Settings page.";console.log(t),alert(t)}}()}();
 ```
 
-[Unminified Source Code](canvaslms/course-settings-find-all-accounts.js)
+[Unminified Source Code](canvaslms/course-show-accounts.js)
 
 **Usage:**
 
