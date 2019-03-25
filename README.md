@@ -36,9 +36,9 @@ javascript:!function(){"use strict";var o=[],r={credentials:"same-origin",header
 | ![Before](images/canvaslms-course-show-accounts-before.png) | 
 | ![After](images/canvaslms-course-show-accounts-after.png) |
 
-5. If it failed, you should see an error message  explaining what went wrong. For example, if your session has expired OR you are not authorized to retrieve course/account details, then you will see an error message like this:
+5. If it failed, you should see an error message explaining what went wrong. For example, if your login session expired, then you will see an error message like this:
 
-| Error (401 Forbidden) |
+| Error (401 Unauthorized) |
 |---|
 | ![401](images/canvaslms-course-show-accounts-401.png) |
 
