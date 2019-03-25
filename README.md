@@ -24,9 +24,9 @@ javascript:!function(){"use strict";var o=[],r={credentials:"same-origin",header
 **Bookmark Usage:**
 
 1. Create a new bookmark:
-    a. Enter a name for the bookmark (e.g. `course-show-accounts.js`).
-    b. Copy and paste the code into the bookmark URL.
-    c. Save the bookmark.
+    - Enter a name for the bookmark (e.g. `course-show-accounts.js`).
+    - Copy and paste the code into the bookmark URL.
+    - Save the bookmark.
 2. Navigate to a canvas course and visit the settings page.
 3. Click the bookmark to run the code snippet.
 4. If it worked, you should see something like this:
